@@ -21,7 +21,7 @@ class MainScreen extends StatelessWidget {
                   child: const Text('Fetch weather at Cairo'),
                 ),
                 loading: (state) => const CircularProgressIndicator(),
-                error: (state) => const Text('Error something wrong happened!'),
+                error: (state) => Text(state.error),
                 weatherData: (state) =>
                     Text('Weather in Cairo is ${state.weather.tempC}C'),
               ),

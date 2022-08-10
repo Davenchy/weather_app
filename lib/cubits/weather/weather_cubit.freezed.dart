@@ -21,7 +21,7 @@ mixin _$WeatherState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Weather weather) weatherData,
-    required TResult Function() error,
+    required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$WeatherState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Weather weather)? weatherData,
-    TResult Function()? error,
+    TResult Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$WeatherState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Weather weather)? weatherData,
-    TResult Function()? error,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,7 +126,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Weather weather) weatherData,
-    required TResult Function() error,
+    required TResult Function(String error) error,
   }) {
     return initial();
   }
@@ -137,7 +137,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Weather weather)? weatherData,
-    TResult Function()? error,
+    TResult Function(String error)? error,
   }) {
     return initial?.call();
   }
@@ -148,7 +148,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Weather weather)? weatherData,
-    TResult Function()? error,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -241,7 +241,7 @@ class _$_Loading implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Weather weather) weatherData,
-    required TResult Function() error,
+    required TResult Function(String error) error,
   }) {
     return loading();
   }
@@ -252,7 +252,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Weather weather)? weatherData,
-    TResult Function()? error,
+    TResult Function(String error)? error,
   }) {
     return loading?.call();
   }
@@ -263,7 +263,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Weather weather)? weatherData,
-    TResult Function()? error,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -391,7 +391,7 @@ class _$_WeatherData implements _WeatherData {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Weather weather) weatherData,
-    required TResult Function() error,
+    required TResult Function(String error) error,
   }) {
     return weatherData(weather);
   }
@@ -402,7 +402,7 @@ class _$_WeatherData implements _WeatherData {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Weather weather)? weatherData,
-    TResult Function()? error,
+    TResult Function(String error)? error,
   }) {
     return weatherData?.call(weather);
   }
@@ -413,7 +413,7 @@ class _$_WeatherData implements _WeatherData {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Weather weather)? weatherData,
-    TResult Function()? error,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (weatherData != null) {
@@ -473,6 +473,7 @@ abstract class _WeatherData implements WeatherState {
 abstract class _$$_ErrorCopyWith<$Res> {
   factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
       __$$_ErrorCopyWithImpl<$Res>;
+  $Res call({String error});
 }
 
 /// @nodoc
@@ -483,26 +484,49 @@ class __$$_ErrorCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
 
   @override
   _$_Error get _value => super._value as _$_Error;
+
+  @override
+  $Res call({
+    Object? error = freezed,
+  }) {
+    return _then(_$_Error(
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Error implements _Error {
-  const _$_Error();
+  const _$_Error(this.error);
+
+  @override
+  final String error;
 
   @override
   String toString() {
-    return 'WeatherState.error()';
+    return 'WeatherState.error(error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Error);
+        (other.runtimeType == runtimeType &&
+            other is _$_Error &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -510,9 +534,9 @@ class _$_Error implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Weather weather) weatherData,
-    required TResult Function() error,
+    required TResult Function(String error) error,
   }) {
-    return error();
+    return error(this.error);
   }
 
   @override
@@ -521,9 +545,9 @@ class _$_Error implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Weather weather)? weatherData,
-    TResult Function()? error,
+    TResult Function(String error)? error,
   }) {
-    return error?.call();
+    return error?.call(this.error);
   }
 
   @override
@@ -532,11 +556,11 @@ class _$_Error implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Weather weather)? weatherData,
-    TResult Function()? error,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error();
+      return error(this.error);
     }
     return orElse();
   }
@@ -580,5 +604,10 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements WeatherState {
-  const factory _Error() = _$_Error;
+  const factory _Error(final String error) = _$_Error;
+
+  String get error;
+  @JsonKey(ignore: true)
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      throw _privateConstructorUsedError;
 }

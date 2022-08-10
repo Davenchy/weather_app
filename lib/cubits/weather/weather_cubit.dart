@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../core/failures.dart';
 import '../../models/weather.dart';
 import '../../repositories/weather_repository.dart';
 
@@ -18,7 +19,10 @@ class WeatherCubit extends Cubit<WeatherState> {
 
   void requestWeather(String country) async {
     emit(const WeatherState.loading());
-    final weather = await repo.requestWeather(country);
-    emit(WeatherState.weatherData(weather));
+    final response = await repo.requestWeather(country);
+    response.fold(
+      (failure) => emit(WeatherState.error(getFailureMessage(failure))),
+      (weather) => emit(WeatherState.weatherData(weather)),
+    );
   }
 }
