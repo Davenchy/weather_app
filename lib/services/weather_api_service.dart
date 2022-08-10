@@ -7,7 +7,7 @@ import '../models/weather.dart';
 
 part 'weather_api_service.g.dart';
 
-@RestApi(baseUrl: kBaseUrl)
+@RestApi()
 abstract class WeatherApiService {
   factory WeatherApiService(Dio dio, {String? baseUrl}) = _WeatherApiService;
 
@@ -26,5 +26,6 @@ abstract class WeatherApiServiceModule {
         ),
       );
 
-  WeatherApiService getService(Dio dio) => WeatherApiService(dio);
+  WeatherApiService getService(Dio dio) =>
+      WeatherApiService(dio, baseUrl: kBaseUrl);
 }
