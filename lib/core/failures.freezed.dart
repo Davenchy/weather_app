@@ -20,18 +20,21 @@ mixin _$Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchFailed,
     required TResult Function() noConnection,
+    required TResult Function() noMatchingLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? fetchFailed,
     TResult Function()? noConnection,
+    TResult Function()? noMatchingLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchFailed,
     TResult Function()? noConnection,
+    TResult Function()? noMatchingLocation,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$Failure {
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchFailed value) fetchFailed,
     required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_noMatchingLocation value) noMatchingLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_FetchFailed value)? fetchFailed,
     TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_noMatchingLocation value)? noMatchingLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchFailed value)? fetchFailed,
     TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_noMatchingLocation value)? noMatchingLocation,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,6 +119,7 @@ class _$_FetchFailed implements _FetchFailed {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchFailed,
     required TResult Function() noConnection,
+    required TResult Function() noMatchingLocation,
   }) {
     return fetchFailed();
   }
@@ -122,6 +129,7 @@ class _$_FetchFailed implements _FetchFailed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? fetchFailed,
     TResult Function()? noConnection,
+    TResult Function()? noMatchingLocation,
   }) {
     return fetchFailed?.call();
   }
@@ -131,6 +139,7 @@ class _$_FetchFailed implements _FetchFailed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchFailed,
     TResult Function()? noConnection,
+    TResult Function()? noMatchingLocation,
     required TResult orElse(),
   }) {
     if (fetchFailed != null) {
@@ -144,6 +153,7 @@ class _$_FetchFailed implements _FetchFailed {
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchFailed value) fetchFailed,
     required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_noMatchingLocation value) noMatchingLocation,
   }) {
     return fetchFailed(this);
   }
@@ -153,6 +163,7 @@ class _$_FetchFailed implements _FetchFailed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_FetchFailed value)? fetchFailed,
     TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_noMatchingLocation value)? noMatchingLocation,
   }) {
     return fetchFailed?.call(this);
   }
@@ -162,6 +173,7 @@ class _$_FetchFailed implements _FetchFailed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchFailed value)? fetchFailed,
     TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_noMatchingLocation value)? noMatchingLocation,
     required TResult orElse(),
   }) {
     if (fetchFailed != null) {
@@ -217,6 +229,7 @@ class _$_NoConnection implements _NoConnection {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchFailed,
     required TResult Function() noConnection,
+    required TResult Function() noMatchingLocation,
   }) {
     return noConnection();
   }
@@ -226,6 +239,7 @@ class _$_NoConnection implements _NoConnection {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? fetchFailed,
     TResult Function()? noConnection,
+    TResult Function()? noMatchingLocation,
   }) {
     return noConnection?.call();
   }
@@ -235,6 +249,7 @@ class _$_NoConnection implements _NoConnection {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchFailed,
     TResult Function()? noConnection,
+    TResult Function()? noMatchingLocation,
     required TResult orElse(),
   }) {
     if (noConnection != null) {
@@ -248,6 +263,7 @@ class _$_NoConnection implements _NoConnection {
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchFailed value) fetchFailed,
     required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_noMatchingLocation value) noMatchingLocation,
   }) {
     return noConnection(this);
   }
@@ -257,6 +273,7 @@ class _$_NoConnection implements _NoConnection {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_FetchFailed value)? fetchFailed,
     TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_noMatchingLocation value)? noMatchingLocation,
   }) {
     return noConnection?.call(this);
   }
@@ -266,6 +283,7 @@ class _$_NoConnection implements _NoConnection {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchFailed value)? fetchFailed,
     TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_noMatchingLocation value)? noMatchingLocation,
     required TResult orElse(),
   }) {
     if (noConnection != null) {
@@ -277,4 +295,115 @@ class _$_NoConnection implements _NoConnection {
 
 abstract class _NoConnection implements Failure {
   const factory _NoConnection() = _$_NoConnection;
+}
+
+/// @nodoc
+abstract class _$$_noMatchingLocationCopyWith<$Res> {
+  factory _$$_noMatchingLocationCopyWith(_$_noMatchingLocation value,
+          $Res Function(_$_noMatchingLocation) then) =
+      __$$_noMatchingLocationCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_noMatchingLocationCopyWithImpl<$Res>
+    extends _$FailureCopyWithImpl<$Res>
+    implements _$$_noMatchingLocationCopyWith<$Res> {
+  __$$_noMatchingLocationCopyWithImpl(
+      _$_noMatchingLocation _value, $Res Function(_$_noMatchingLocation) _then)
+      : super(_value, (v) => _then(v as _$_noMatchingLocation));
+
+  @override
+  _$_noMatchingLocation get _value => super._value as _$_noMatchingLocation;
+}
+
+/// @nodoc
+
+class _$_noMatchingLocation implements _noMatchingLocation {
+  const _$_noMatchingLocation();
+
+  @override
+  String toString() {
+    return 'Failure.noMatchingLocation()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_noMatchingLocation);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchFailed,
+    required TResult Function() noConnection,
+    required TResult Function() noMatchingLocation,
+  }) {
+    return noMatchingLocation();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? fetchFailed,
+    TResult Function()? noConnection,
+    TResult Function()? noMatchingLocation,
+  }) {
+    return noMatchingLocation?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchFailed,
+    TResult Function()? noConnection,
+    TResult Function()? noMatchingLocation,
+    required TResult orElse(),
+  }) {
+    if (noMatchingLocation != null) {
+      return noMatchingLocation();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchFailed value) fetchFailed,
+    required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_noMatchingLocation value) noMatchingLocation,
+  }) {
+    return noMatchingLocation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_FetchFailed value)? fetchFailed,
+    TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_noMatchingLocation value)? noMatchingLocation,
+  }) {
+    return noMatchingLocation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchFailed value)? fetchFailed,
+    TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_noMatchingLocation value)? noMatchingLocation,
+    required TResult orElse(),
+  }) {
+    if (noMatchingLocation != null) {
+      return noMatchingLocation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _noMatchingLocation implements Failure {
+  const factory _noMatchingLocation() = _$_noMatchingLocation;
 }

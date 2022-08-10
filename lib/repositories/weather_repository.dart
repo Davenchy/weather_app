@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
@@ -22,6 +23,13 @@ class WeatherRepository {
       // fetch weather data
       final weather = await service.requestWeather(country);
       return Right(weather);
+    } on DioError catch (err) {
+      final res = err.response;
+      if (res?.statusCode == 400 && (res?.data as Map)['code'] == 1006) {
+        return const Left(Failure.noMatchingLocation());
+      } else {
+        return const Left(Failure.fetchFailed());
+      }
     } catch (err) {
       return const Left(Failure.fetchFailed());
     }
