@@ -1,34 +1,30 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
+import 'package:retrofit/retrofit.dart';
 
 import '../../core/constants.dart';
 import '../models/weather.dart';
 
-class WeatherApiService {
-  const WeatherApiService(this.dio);
+part 'weather_api_service.g.dart';
 
-  final Dio dio;
+@RestApi(baseUrl: kBaseUrl)
+abstract class WeatherApiService {
+  factory WeatherApiService(Dio dio, {String? baseUrl}) = _WeatherApiService;
 
-  Future<Weather> requestWeather(String query) async {
-    final response = await dio.get<Map>(
-      '/current.json',
-      queryParameters: {'q': query},
-    );
-
-    if (response.statusCode != 200) throw Exception('failed to fetch data');
-
-    final data = response.data!.cast<String, dynamic>();
-    final weather = Weather.fromJson(data);
-    return weather;
-  }
+  @GET('/current.json')
+  Future<Weather> requestWeather(@Query('q') String country);
 }
 
-void main() async {
-  final dio = Dio(BaseOptions(
-    baseUrl: kBaseUrl,
-    queryParameters: {'key': kApiKey, 'aqi': 'no'},
-  ));
+@module
+abstract class WeatherApiServiceModule {
+  Dio get dio => Dio(
+        BaseOptions(
+          queryParameters: {
+            'key': kApiKey,
+            'aqi': 'no',
+          },
+        ),
+      );
 
-  final service = WeatherApiService(dio);
-  final results = await service.requestWeather('Cairo');
-  print(results.toJson());
+  WeatherApiService getService(Dio dio) => WeatherApiService(dio);
 }
