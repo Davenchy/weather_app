@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../cubits/weather/weather_cubit.dart';
-import '../models/country_result_item.dart';
+import '../models/country_item.dart';
 import '../screens/weather_screen.dart';
 
 class SearchResultsWidget extends StatelessWidget {

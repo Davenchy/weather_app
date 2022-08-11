@@ -15,45 +15,44 @@ class WeatherScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final whiteSpace = size.width * 0.05;
 
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-      ),
-      child: Scaffold(
-        body: Center(
-          child: BlocBuilder<WeatherCubit, WeatherState>(
+    return BlocListener<WeatherCubit, WeatherState>(
+      listener: (context, state) {
+        if (state.error != null) Navigator.pop(context);
+      },
+      child: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: const SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+        ),
+        child: Scaffold(
+          body: Center(
+            child: BlocBuilder<WeatherCubit, WeatherState>(
               builder: (context, state) {
-            return Stack(
-              children: [
-                SizedBox(
-                  width: size.width,
-                  height: size.height,
-                  child: BlocBuilder<WeatherCubit, WeatherState>(
-                      builder: (context, state) {
-                    return BackgroundWidget(weather: state.weather);
-                  }),
-                ),
-                SafeArea(
-                  child: Padding(
-                    padding: EdgeInsets.all(whiteSpace),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        BlocBuilder<WeatherCubit, WeatherState>(
-                            builder: (context, state) {
-                          return TopInfoWidget(weather: state.weather);
-                        }),
-                        BlocBuilder<WeatherCubit, WeatherState>(
-                            builder: (context, state) {
-                          return BottomInfoWidget(weather: state.weather);
-                        }),
-                      ],
+                return Stack(
+                  children: [
+                    const BackgroundWidget(),
+                    SafeArea(
+                      child: Padding(
+                        padding: EdgeInsets.all(whiteSpace),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            BlocBuilder<WeatherCubit, WeatherState>(
+                                builder: (context, state) {
+                              return TopInfoWidget(weather: state.weather);
+                            }),
+                            BlocBuilder<WeatherCubit, WeatherState>(
+                                builder: (context, state) {
+                              return BottomInfoWidget(weather: state.weather);
+                            }),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ],
-            );
-          }),
+                  ],
+                );
+              },
+            ),
+          ),
         ),
       ),
     );

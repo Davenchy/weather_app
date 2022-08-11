@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../models/country_result_item.dart';
+import '../../models/country_item.dart';
 import '../../repositories/weather_repository.dart';
 
 part 'search_cubit.freezed.dart';

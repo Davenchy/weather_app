@@ -6,14 +6,16 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 
 import '../core/failures.dart';
-import '../models/country_result_item.dart';
+import '../models/country_item.dart';
+import '../models/unsplash_image.dart';
 import '../models/weather.dart';
-import '../services/weather_api_service.dart';
+import '../services/api_services.dart';
 
 @injectable
 class WeatherRepository {
-  WeatherRepository(this.service);
-  final WeatherApiService service;
+  WeatherRepository(this.weatherService, this.unsplashService);
+  final WeatherApiService weatherService;
+  final UnsplashService unsplashService;
 
   Future<Either<Failure, T>> _handler<T>(Future<T> Function() callback) async {
     try {
@@ -23,7 +25,7 @@ class WeatherRepository {
         return const Left(Failure.noConnection());
       }
 
-      // fetch weather data
+      // fetch data
       final result = await callback();
       return Right(result);
     } on DioError catch (err, stk) {
@@ -45,8 +47,21 @@ class WeatherRepository {
   }
 
   Future<Either<Failure, Weather>> requestWeather(String country) =>
-      _handler(() => service.requestWeather(country));
+      _handler(() => weatherService.requestWeather(country));
 
   Future<Either<Failure, List<CountryItem>>> search(String query) =>
-      _handler<List<CountryItem>>(() => service.search(query));
+      _handler<List<CountryItem>>(() => weatherService.search(query));
+
+  Future<UnsplashImage?> randomImage(String query) async {
+    // check connectivity
+    final connection = await (Connectivity().checkConnectivity());
+    if (connection == ConnectivityResult.none) return null;
+
+    // fetch image
+    try {
+      return await unsplashService.random(query);
+    } catch (err) {
+      return null;
+    }
+  }
 }

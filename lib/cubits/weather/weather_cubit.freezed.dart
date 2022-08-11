@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$WeatherState {
   bool get isLoading => throw _privateConstructorUsedError;
+  UnsplashImage? get image => throw _privateConstructorUsedError;
   Weather? get weather => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
 
@@ -30,8 +31,10 @@ abstract class $WeatherStateCopyWith<$Res> {
   factory $WeatherStateCopyWith(
           WeatherState value, $Res Function(WeatherState) then) =
       _$WeatherStateCopyWithImpl<$Res>;
-  $Res call({bool isLoading, Weather? weather, String? error});
+  $Res call(
+      {bool isLoading, UnsplashImage? image, Weather? weather, String? error});
 
+  $UnsplashImageCopyWith<$Res>? get image;
   $WeatherCopyWith<$Res>? get weather;
 }
 
@@ -46,6 +49,7 @@ class _$WeatherStateCopyWithImpl<$Res> implements $WeatherStateCopyWith<$Res> {
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? image = freezed,
     Object? weather = freezed,
     Object? error = freezed,
   }) {
@@ -54,6 +58,10 @@ class _$WeatherStateCopyWithImpl<$Res> implements $WeatherStateCopyWith<$Res> {
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as UnsplashImage?,
       weather: weather == freezed
           ? _value.weather
           : weather // ignore: cast_nullable_to_non_nullable
@@ -63,6 +71,17 @@ class _$WeatherStateCopyWithImpl<$Res> implements $WeatherStateCopyWith<$Res> {
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
+  }
+
+  @override
+  $UnsplashImageCopyWith<$Res>? get image {
+    if (_value.image == null) {
+      return null;
+    }
+
+    return $UnsplashImageCopyWith<$Res>(_value.image!, (value) {
+      return _then(_value.copyWith(image: value));
+    });
   }
 
   @override
@@ -84,8 +103,11 @@ abstract class _$$_WeatherStateCopyWith<$Res>
           _$_WeatherState value, $Res Function(_$_WeatherState) then) =
       __$$_WeatherStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool isLoading, Weather? weather, String? error});
+  $Res call(
+      {bool isLoading, UnsplashImage? image, Weather? weather, String? error});
 
+  @override
+  $UnsplashImageCopyWith<$Res>? get image;
   @override
   $WeatherCopyWith<$Res>? get weather;
 }
@@ -104,6 +126,7 @@ class __$$_WeatherStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? image = freezed,
     Object? weather = freezed,
     Object? error = freezed,
   }) {
@@ -112,6 +135,10 @@ class __$$_WeatherStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as UnsplashImage?,
       weather: weather == freezed
           ? _value.weather
           : weather // ignore: cast_nullable_to_non_nullable
@@ -127,11 +154,14 @@ class __$$_WeatherStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_WeatherState implements _WeatherState {
-  const _$_WeatherState({this.isLoading = false, this.weather, this.error});
+  const _$_WeatherState(
+      {this.isLoading = false, this.image, this.weather, this.error});
 
   @override
   @JsonKey()
   final bool isLoading;
+  @override
+  final UnsplashImage? image;
   @override
   final Weather? weather;
   @override
@@ -139,7 +169,7 @@ class _$_WeatherState implements _WeatherState {
 
   @override
   String toString() {
-    return 'WeatherState(isLoading: $isLoading, weather: $weather, error: $error)';
+    return 'WeatherState(isLoading: $isLoading, image: $image, weather: $weather, error: $error)';
   }
 
   @override
@@ -148,6 +178,7 @@ class _$_WeatherState implements _WeatherState {
         (other.runtimeType == runtimeType &&
             other is _$_WeatherState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality().equals(other.image, image) &&
             const DeepCollectionEquality().equals(other.weather, weather) &&
             const DeepCollectionEquality().equals(other.error, error));
   }
@@ -156,6 +187,7 @@ class _$_WeatherState implements _WeatherState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(image),
       const DeepCollectionEquality().hash(weather),
       const DeepCollectionEquality().hash(error));
 
@@ -168,11 +200,14 @@ class _$_WeatherState implements _WeatherState {
 abstract class _WeatherState implements WeatherState {
   const factory _WeatherState(
       {final bool isLoading,
+      final UnsplashImage? image,
       final Weather? weather,
       final String? error}) = _$_WeatherState;
 
   @override
   bool get isLoading;
+  @override
+  UnsplashImage? get image;
   @override
   Weather? get weather;
   @override

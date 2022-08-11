@@ -13,8 +13,8 @@ class TopInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    final country = weather?.location.country;
-    final city = weather?.location.name;
+    final country = weather?.country;
+    final location = weather?.location;
 
     return Padding(
       padding: const EdgeInsets.only(top: 10),
@@ -30,7 +30,9 @@ class TopInfoWidget extends StatelessWidget {
                   alignment: AlignmentDirectional.centerStart,
                   fit: BoxFit.scaleDown,
                   child: Text(
-                    weather == null ? '...' : '$country/$city'.toUpperCase(),
+                    weather == null
+                        ? '...'
+                        : '$country/$location'.toUpperCase(),
                     style: const TextStyle(fontSize: 24),
                   ),
                 ),
@@ -44,7 +46,7 @@ class TopInfoWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        weather?.tempC.round().toString() ?? '...',
+                        weather?.temp.round().toString() ?? '...',
                         style: const TextStyle(fontSize: 120),
                       ),
                       const Text(
@@ -64,7 +66,7 @@ class TopInfoWidget extends StatelessWidget {
             RotatedBox(
               quarterTurns: -1,
               child: Text(
-                weather!.condition.text,
+                weather!.condition,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,

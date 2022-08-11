@@ -28,8 +28,7 @@ class BottomInfoWidget extends StatelessWidget {
           ),
           InfoCard(
             title: 'Visibility',
-            value:
-                weather == null ? '...' : '${weather!.visibilityKm.round()}km',
+            value: weather == null ? '...' : '${weather!.visibility.round()}km',
           ),
           InfoCard(
             title: 'UV index',

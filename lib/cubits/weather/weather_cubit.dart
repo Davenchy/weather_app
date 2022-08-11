@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../core/failures.dart';
+import '../../models/unsplash_image.dart';
 import '../../models/weather.dart';
 import '../../repositories/weather_repository.dart';
 
@@ -20,9 +21,13 @@ class WeatherCubit extends Cubit<WeatherState> {
   void requestWeather(String country) async {
     emit(const WeatherState(isLoading: true));
     final response = await repo.requestWeather(country);
+
+    UnsplashImage? image;
+    if (response.isRight()) image = await repo.randomImage('');
+
     response.fold(
       (failure) => emit(WeatherState(error: getFailureMessage(failure))),
-      (weather) => emit(WeatherState(weather: weather)),
+      (weather) => emit(WeatherState(weather: weather, image: image)),
     );
   }
 }
