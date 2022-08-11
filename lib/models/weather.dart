@@ -51,22 +51,24 @@ class Weather with _$Weather {
 
   Map<String, dynamic> toJson() {
     return {
-      'last_updated': lastUpdated,
-      'temp_c': tempC,
-      'temp_f': tempF,
-      'is_day': isDay,
-      'wind_mph': windMph,
-      'wind_kph': windKph,
-      'wind_dir': windDir,
-      'wind_degree': windDeg,
-      'humidity': humidity,
-      'feelslike_c': feelsLikeC,
-      'feelslike_f': feelsLikeF,
-      'vis_km': visibilityKm,
-      'vis_miles': visibilityM,
-      'uv': uv,
       'location': location.toJson(),
-      'condition': condition.toJson(),
+      'current': {
+        'last_updated': lastUpdated,
+        'temp_c': tempC,
+        'temp_f': tempF,
+        'is_day': isDay ? 1 : 0,
+        'wind_mph': windMph,
+        'wind_kph': windKph,
+        'wind_dir': windDir,
+        'wind_degree': windDeg,
+        'humidity': humidity,
+        'feelslike_c': feelsLikeC,
+        'feelslike_f': feelsLikeF,
+        'vis_km': visibilityKm,
+        'vis_miles': visibilityM,
+        'uv': uv,
+        'condition': condition.toJson(),
+      },
     };
   }
 }
