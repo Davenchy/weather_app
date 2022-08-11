@@ -12,17 +12,17 @@ part 'weather_cubit.freezed.dart';
 
 @injectable
 class WeatherCubit extends Cubit<WeatherState> {
-  WeatherCubit(this.repo) : super(const WeatherState.initial());
+  WeatherCubit(this.repo) : super(const WeatherState());
   final WeatherRepository repo;
 
   static WeatherCubit of(BuildContext context) => context.read<WeatherCubit>();
 
   void requestWeather(String country) async {
-    emit(const WeatherState.loading());
+    emit(const WeatherState(isLoading: true));
     final response = await repo.requestWeather(country);
     response.fold(
-      (failure) => emit(WeatherState.error(getFailureMessage(failure))),
-      (weather) => emit(WeatherState.weatherData(weather)),
+      (failure) => emit(WeatherState(error: getFailureMessage(failure))),
+      (weather) => emit(WeatherState(weather: weather)),
     );
   }
 }

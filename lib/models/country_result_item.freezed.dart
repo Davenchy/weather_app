@@ -14,38 +14,37 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CountryResultItem _$CountryResultItemFromJson(Map<String, dynamic> json) {
+CountryItem _$CountryItemFromJson(Map<String, dynamic> json) {
   return _CountryResultItem.fromJson(json);
 }
 
 /// @nodoc
-mixin _$CountryResultItem {
+mixin _$CountryItem {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get country => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CountryResultItemCopyWith<CountryResultItem> get copyWith =>
+  $CountryItemCopyWith<CountryItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CountryResultItemCopyWith<$Res> {
-  factory $CountryResultItemCopyWith(
-          CountryResultItem value, $Res Function(CountryResultItem) then) =
-      _$CountryResultItemCopyWithImpl<$Res>;
+abstract class $CountryItemCopyWith<$Res> {
+  factory $CountryItemCopyWith(
+          CountryItem value, $Res Function(CountryItem) then) =
+      _$CountryItemCopyWithImpl<$Res>;
   $Res call({int id, String name, String country});
 }
 
 /// @nodoc
-class _$CountryResultItemCopyWithImpl<$Res>
-    implements $CountryResultItemCopyWith<$Res> {
-  _$CountryResultItemCopyWithImpl(this._value, this._then);
+class _$CountryItemCopyWithImpl<$Res> implements $CountryItemCopyWith<$Res> {
+  _$CountryItemCopyWithImpl(this._value, this._then);
 
-  final CountryResultItem _value;
+  final CountryItem _value;
   // ignore: unused_field
-  final $Res Function(CountryResultItem) _then;
+  final $Res Function(CountryItem) _then;
 
   @override
   $Res call({
@@ -72,7 +71,7 @@ class _$CountryResultItemCopyWithImpl<$Res>
 
 /// @nodoc
 abstract class _$$_CountryResultItemCopyWith<$Res>
-    implements $CountryResultItemCopyWith<$Res> {
+    implements $CountryItemCopyWith<$Res> {
   factory _$$_CountryResultItemCopyWith(_$_CountryResultItem value,
           $Res Function(_$_CountryResultItem) then) =
       __$$_CountryResultItemCopyWithImpl<$Res>;
@@ -82,7 +81,7 @@ abstract class _$$_CountryResultItemCopyWith<$Res>
 
 /// @nodoc
 class __$$_CountryResultItemCopyWithImpl<$Res>
-    extends _$CountryResultItemCopyWithImpl<$Res>
+    extends _$CountryItemCopyWithImpl<$Res>
     implements _$$_CountryResultItemCopyWith<$Res> {
   __$$_CountryResultItemCopyWithImpl(
       _$_CountryResultItem _value, $Res Function(_$_CountryResultItem) _then)
@@ -132,7 +131,7 @@ class _$_CountryResultItem implements _CountryResultItem {
 
   @override
   String toString() {
-    return 'CountryResultItem(id: $id, name: $name, country: $country)';
+    return 'CountryItem(id: $id, name: $name, country: $country)';
   }
 
   @override
@@ -167,7 +166,7 @@ class _$_CountryResultItem implements _CountryResultItem {
   }
 }
 
-abstract class _CountryResultItem implements CountryResultItem {
+abstract class _CountryResultItem implements CountryItem {
   factory _CountryResultItem(
       {required final int id,
       required final String name,

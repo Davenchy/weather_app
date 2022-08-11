@@ -5,31 +5,36 @@ import '../models/weather.dart';
 class BottomInfoWidget extends StatelessWidget {
   const BottomInfoWidget({
     Key? key,
-    required this.weather,
-    this.color = Colors.white,
+    this.weather,
   }) : super(key: key);
 
-  final Weather weather;
-  final Color color;
+  final Weather? weather;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        border: Border.all(width: 2, color: color),
+        border: Border.all(width: 2, color: Colors.white),
         borderRadius: BorderRadius.circular(20),
         color: Colors.white.withOpacity(0.2),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          InfoCard(title: 'Humidity', value: '${weather.humidity}%'),
+          InfoCard(
+            title: 'Humidity',
+            value: weather == null ? '...' : '${weather!.humidity}%',
+          ),
           InfoCard(
             title: 'Visibility',
-            value: '${weather.visibilityKm.round()}km',
+            value:
+                weather == null ? '...' : '${weather!.visibilityKm.round()}km',
           ),
-          InfoCard(title: 'UV index', value: mapUvIndex(weather.uv.round())),
+          InfoCard(
+            title: 'UV index',
+            value: weather == null ? '...' : mapUvIndex(weather!.uv.round()),
+          ),
         ],
       ),
     );
@@ -55,12 +60,10 @@ class InfoCard extends StatelessWidget {
     Key? key,
     required this.title,
     required this.value,
-    this.color = Colors.white,
   }) : super(key: key);
 
   final String title;
   final String value;
-  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -68,16 +71,14 @@ class InfoCard extends StatelessWidget {
       children: [
         Text(
           value,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
-            color: color,
           ),
         ),
         const SizedBox(height: 6),
         Text(
           title,
-          style: TextStyle(fontSize: 12, color: color),
         ),
       ],
     );

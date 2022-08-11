@@ -16,55 +16,12 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$WeatherState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(Weather weather) weatherData,
-    required TResult Function(String error) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Weather weather)? weatherData,
-    TResult Function(String error)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Weather weather)? weatherData,
-    TResult Function(String error)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_WeatherData value) weatherData,
-    required TResult Function(_Error value) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_WeatherData value)? weatherData,
-    TResult Function(_Error value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_WeatherData value)? weatherData,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) =>
+  bool get isLoading => throw _privateConstructorUsedError;
+  Weather? get weather => throw _privateConstructorUsedError;
+  String? get error => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $WeatherStateCopyWith<WeatherState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -73,6 +30,9 @@ abstract class $WeatherStateCopyWith<$Res> {
   factory $WeatherStateCopyWith(
           WeatherState value, $Res Function(WeatherState) then) =
       _$WeatherStateCopyWithImpl<$Res>;
+  $Res call({bool isLoading, Weather? weather, String? error});
+
+  $WeatherCopyWith<$Res>? get weather;
 }
 
 /// @nodoc
@@ -82,532 +42,143 @@ class _$WeatherStateCopyWithImpl<$Res> implements $WeatherStateCopyWith<$Res> {
   final WeatherState _value;
   // ignore: unused_field
   final $Res Function(WeatherState) _then;
-}
-
-/// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
-}
-
-/// @nodoc
-
-class _$_Initial implements _Initial {
-  const _$_Initial();
-
-  @override
-  String toString() {
-    return 'WeatherState.initial()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(Weather weather) weatherData,
-    required TResult Function(String error) error,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Weather weather)? weatherData,
-    TResult Function(String error)? error,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Weather weather)? weatherData,
-    TResult Function(String error)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_WeatherData value) weatherData,
-    required TResult Function(_Error value) error,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_WeatherData value)? weatherData,
-    TResult Function(_Error value)? error,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_WeatherData value)? weatherData,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements WeatherState {
-  const factory _Initial() = _$_Initial;
-}
-
-/// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_LoadingCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
-      : super(_value, (v) => _then(v as _$_Loading));
-
-  @override
-  _$_Loading get _value => super._value as _$_Loading;
-}
-
-/// @nodoc
-
-class _$_Loading implements _Loading {
-  const _$_Loading();
-
-  @override
-  String toString() {
-    return 'WeatherState.loading()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(Weather weather) weatherData,
-    required TResult Function(String error) error,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Weather weather)? weatherData,
-    TResult Function(String error)? error,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Weather weather)? weatherData,
-    TResult Function(String error)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_WeatherData value) weatherData,
-    required TResult Function(_Error value) error,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_WeatherData value)? weatherData,
-    TResult Function(_Error value)? error,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_WeatherData value)? weatherData,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loading implements WeatherState {
-  const factory _Loading() = _$_Loading;
-}
-
-/// @nodoc
-abstract class _$$_WeatherDataCopyWith<$Res> {
-  factory _$$_WeatherDataCopyWith(
-          _$_WeatherData value, $Res Function(_$_WeatherData) then) =
-      __$$_WeatherDataCopyWithImpl<$Res>;
-  $Res call({Weather weather});
-
-  $WeatherCopyWith<$Res> get weather;
-}
-
-/// @nodoc
-class __$$_WeatherDataCopyWithImpl<$Res>
-    extends _$WeatherStateCopyWithImpl<$Res>
-    implements _$$_WeatherDataCopyWith<$Res> {
-  __$$_WeatherDataCopyWithImpl(
-      _$_WeatherData _value, $Res Function(_$_WeatherData) _then)
-      : super(_value, (v) => _then(v as _$_WeatherData));
-
-  @override
-  _$_WeatherData get _value => super._value as _$_WeatherData;
 
   @override
   $Res call({
+    Object? isLoading = freezed,
     Object? weather = freezed,
+    Object? error = freezed,
   }) {
-    return _then(_$_WeatherData(
-      weather == freezed
+    return _then(_value.copyWith(
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      weather: weather == freezed
           ? _value.weather
           : weather // ignore: cast_nullable_to_non_nullable
-              as Weather,
+              as Weather?,
+      error: error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
   @override
-  $WeatherCopyWith<$Res> get weather {
-    return $WeatherCopyWith<$Res>(_value.weather, (value) {
+  $WeatherCopyWith<$Res>? get weather {
+    if (_value.weather == null) {
+      return null;
+    }
+
+    return $WeatherCopyWith<$Res>(_value.weather!, (value) {
       return _then(_value.copyWith(weather: value));
     });
   }
 }
 
 /// @nodoc
-
-class _$_WeatherData implements _WeatherData {
-  const _$_WeatherData(this.weather);
+abstract class _$$_WeatherStateCopyWith<$Res>
+    implements $WeatherStateCopyWith<$Res> {
+  factory _$$_WeatherStateCopyWith(
+          _$_WeatherState value, $Res Function(_$_WeatherState) then) =
+      __$$_WeatherStateCopyWithImpl<$Res>;
+  @override
+  $Res call({bool isLoading, Weather? weather, String? error});
 
   @override
-  final Weather weather;
-
-  @override
-  String toString() {
-    return 'WeatherState.weatherData(weather: $weather)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_WeatherData &&
-            const DeepCollectionEquality().equals(other.weather, weather));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(weather));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_WeatherDataCopyWith<_$_WeatherData> get copyWith =>
-      __$$_WeatherDataCopyWithImpl<_$_WeatherData>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(Weather weather) weatherData,
-    required TResult Function(String error) error,
-  }) {
-    return weatherData(weather);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Weather weather)? weatherData,
-    TResult Function(String error)? error,
-  }) {
-    return weatherData?.call(weather);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Weather weather)? weatherData,
-    TResult Function(String error)? error,
-    required TResult orElse(),
-  }) {
-    if (weatherData != null) {
-      return weatherData(weather);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_WeatherData value) weatherData,
-    required TResult Function(_Error value) error,
-  }) {
-    return weatherData(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_WeatherData value)? weatherData,
-    TResult Function(_Error value)? error,
-  }) {
-    return weatherData?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_WeatherData value)? weatherData,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (weatherData != null) {
-      return weatherData(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _WeatherData implements WeatherState {
-  const factory _WeatherData(final Weather weather) = _$_WeatherData;
-
-  Weather get weather;
-  @JsonKey(ignore: true)
-  _$$_WeatherDataCopyWith<_$_WeatherData> get copyWith =>
-      throw _privateConstructorUsedError;
+  $WeatherCopyWith<$Res>? get weather;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
-  $Res call({String error});
-}
-
-/// @nodoc
-class __$$_ErrorCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
-      : super(_value, (v) => _then(v as _$_Error));
+class __$$_WeatherStateCopyWithImpl<$Res>
+    extends _$WeatherStateCopyWithImpl<$Res>
+    implements _$$_WeatherStateCopyWith<$Res> {
+  __$$_WeatherStateCopyWithImpl(
+      _$_WeatherState _value, $Res Function(_$_WeatherState) _then)
+      : super(_value, (v) => _then(v as _$_WeatherState));
 
   @override
-  _$_Error get _value => super._value as _$_Error;
+  _$_WeatherState get _value => super._value as _$_WeatherState;
 
   @override
   $Res call({
+    Object? isLoading = freezed,
+    Object? weather = freezed,
     Object? error = freezed,
   }) {
-    return _then(_$_Error(
-      error == freezed
+    return _then(_$_WeatherState(
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      weather: weather == freezed
+          ? _value.weather
+          : weather // ignore: cast_nullable_to_non_nullable
+              as Weather?,
+      error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Error implements _Error {
-  const _$_Error(this.error);
+class _$_WeatherState implements _WeatherState {
+  const _$_WeatherState({this.isLoading = false, this.weather, this.error});
 
   @override
-  final String error;
+  @JsonKey()
+  final bool isLoading;
+  @override
+  final Weather? weather;
+  @override
+  final String? error;
 
   @override
   String toString() {
-    return 'WeatherState.error(error: $error)';
+    return 'WeatherState(isLoading: $isLoading, weather: $weather, error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Error &&
+            other is _$_WeatherState &&
+            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality().equals(other.weather, weather) &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(weather),
+      const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(Weather weather) weatherData,
-    required TResult Function(String error) error,
-  }) {
-    return error(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Weather weather)? weatherData,
-    TResult Function(String error)? error,
-  }) {
-    return error?.call(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Weather weather)? weatherData,
-    TResult Function(String error)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this.error);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_WeatherData value) weatherData,
-    required TResult Function(_Error value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_WeatherData value)? weatherData,
-    TResult Function(_Error value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_WeatherData value)? weatherData,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
+  _$$_WeatherStateCopyWith<_$_WeatherState> get copyWith =>
+      __$$_WeatherStateCopyWithImpl<_$_WeatherState>(this, _$identity);
 }
 
-abstract class _Error implements WeatherState {
-  const factory _Error(final String error) = _$_Error;
+abstract class _WeatherState implements WeatherState {
+  const factory _WeatherState(
+      {final bool isLoading,
+      final Weather? weather,
+      final String? error}) = _$_WeatherState;
 
-  String get error;
+  @override
+  bool get isLoading;
+  @override
+  Weather? get weather;
+  @override
+  String? get error;
+  @override
   @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+  _$$_WeatherStateCopyWith<_$_WeatherState> get copyWith =>
       throw _privateConstructorUsedError;
 }

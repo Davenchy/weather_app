@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'core/fake_weather.dart';
+import 'cubits/search/search_cubit.dart';
 import 'injection.dart';
 import 'cubits/weather/weather_cubit.dart';
-import 'screens/weather_screen.dart';
+import 'screens/search_screen.dart';
 
 void main() async {
   await dotenv.load();
@@ -19,17 +19,27 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<WeatherCubit>(
-      create: (context) => getIt(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<WeatherCubit>(create: (context) => getIt()),
+        BlocProvider<SearchCubit>(create: (context) => getIt()),
+      ],
       child: MaterialApp(
         title: 'WeatherApp',
         debugShowCheckedModeBanner: false,
-        themeMode: ThemeMode.light,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          textTheme: GoogleFonts.poppinsTextTheme(),
+        themeMode: ThemeMode.dark,
+        darkTheme: ThemeData.dark().copyWith(
+          textTheme: GoogleFonts.poppinsTextTheme(
+            const TextTheme(
+              bodyText1: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+              ),
+            ),
+          ),
+          scaffoldBackgroundColor: const Color.fromARGB(255, 13, 5, 46),
         ),
-        home: WeatherScreen(weather: fakeWeather),
+        home: const SearchScreen(),
       ),
     );
   }

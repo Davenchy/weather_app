@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'constants.dart';
+
 part 'failures.freezed.dart';
 
 @freezed
@@ -10,7 +12,7 @@ abstract class Failure with _$Failure {
 }
 
 String getFailureMessage(Failure failure) => failure.map<String>(
-      fetchFailed: (_) => 'Failed to fetch data!',
-      noConnection: (_) => 'No internet connection!',
-      noMatchingLocation: (_) => 'No matching location found!',
+      fetchFailed: (_) => kFetchFailedMessage,
+      noConnection: (_) => kNoInternetConnectionMessage,
+      noMatchingLocation: (_) => kNoMatchingLocationMessage,
     );

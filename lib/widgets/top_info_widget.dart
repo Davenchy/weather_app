@@ -5,18 +5,16 @@ import '../models/weather.dart';
 class TopInfoWidget extends StatelessWidget {
   const TopInfoWidget({
     Key? key,
-    required this.weather,
-    this.color = Colors.white,
+    this.weather,
   }) : super(key: key);
 
-  final Weather weather;
-  final Color color;
+  final Weather? weather;
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    final country = weather.location.country;
-    final city = weather.location.name;
+    final country = weather?.location.country;
+    final city = weather?.location.name;
 
     return Padding(
       padding: const EdgeInsets.only(top: 10),
@@ -32,8 +30,8 @@ class TopInfoWidget extends StatelessWidget {
                   alignment: AlignmentDirectional.centerStart,
                   fit: BoxFit.scaleDown,
                   child: Text(
-                    '$country/$city'.toUpperCase(),
-                    style: TextStyle(fontSize: 24, color: color),
+                    weather == null ? '...' : '$country/$city'.toUpperCase(),
+                    style: const TextStyle(fontSize: 24),
                   ),
                 ),
               ),
@@ -46,15 +44,14 @@ class TopInfoWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        weather.tempC.round().toString(),
-                        style: TextStyle(fontSize: 120, color: color),
+                        weather?.tempC.round().toString() ?? '...',
+                        style: const TextStyle(fontSize: 120),
                       ),
-                      Text(
+                      const Text(
                         '\u00B0',
                         style: TextStyle(
                           fontSize: 100,
                           fontWeight: FontWeight.w100,
-                          color: color,
                         ),
                       ),
                     ],
@@ -63,17 +60,17 @@ class TopInfoWidget extends StatelessWidget {
               ),
             ],
           ),
-          RotatedBox(
-            quarterTurns: -1,
-            child: Text(
-              weather.condition.text,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                color: color,
+          if (weather != null)
+            RotatedBox(
+              quarterTurns: -1,
+              child: Text(
+                weather!.condition.text,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
               ),
             ),
-          ),
         ],
       ),
     );

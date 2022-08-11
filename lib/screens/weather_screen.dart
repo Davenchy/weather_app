@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../cubits/weather/weather_cubit.dart';
-import '../models/weather.dart';
 import '../widgets/background_widget.dart';
 import '../widgets/bottom_info_widget.dart';
 import '../widgets/top_info_widget.dart';
 
 class WeatherScreen extends StatelessWidget {
-  const WeatherScreen({Key? key, required this.weather}) : super(key: key);
-
-  final Weather weather;
+  const WeatherScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,32 +21,39 @@ class WeatherScreen extends StatelessWidget {
       ),
       child: Scaffold(
         body: Center(
-          child: Stack(
-            children: [
-              SizedBox(
-                width: size.width,
-                height: size.height,
-                child: const BackgroundWidget(),
-              ),
-              SafeArea(
-                child: Padding(
-                  padding: EdgeInsets.all(whiteSpace),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TopInfoWidget(weather: weather),
-                      GestureDetector(
-                        onTap: () {
-                          WeatherCubit.of(context).requestWeather('Giza');
-                        },
-                        child: BottomInfoWidget(weather: weather),
-                      ),
-                    ],
+          child: BlocBuilder<WeatherCubit, WeatherState>(
+              builder: (context, state) {
+            return Stack(
+              children: [
+                SizedBox(
+                  width: size.width,
+                  height: size.height,
+                  child: BlocBuilder<WeatherCubit, WeatherState>(
+                      builder: (context, state) {
+                    return BackgroundWidget(weather: state.weather);
+                  }),
+                ),
+                SafeArea(
+                  child: Padding(
+                    padding: EdgeInsets.all(whiteSpace),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        BlocBuilder<WeatherCubit, WeatherState>(
+                            builder: (context, state) {
+                          return TopInfoWidget(weather: state.weather);
+                        }),
+                        BlocBuilder<WeatherCubit, WeatherState>(
+                            builder: (context, state) {
+                          return BottomInfoWidget(weather: state.weather);
+                        }),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            );
+          }),
         ),
       ),
     );
