@@ -66,7 +66,7 @@ class TopInfoWidget extends StatelessWidget {
             RotatedBox(
               quarterTurns: -1,
               child: Text(
-                weather!.condition,
+                "It's ${weather!.condition}",
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,

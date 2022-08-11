@@ -60,7 +60,13 @@ class WeatherRepository {
     // fetch image
     try {
       return await unsplashService.random(query);
-    } catch (err) {
+    } on DioError catch (err, stk) {
+      final res = err.response;
+      log(
+        'failed to fetch unsplash image: ${res?.statusCode} [${res?.data}]',
+        error: err,
+        stackTrace: stk,
+      );
       return null;
     }
   }

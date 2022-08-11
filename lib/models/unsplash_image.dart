@@ -8,12 +8,12 @@ class UnsplashImage with _$UnsplashImage {
   const factory UnsplashImage(String url) = _UnsplashImage;
 
   factory UnsplashImage.fromJson(Map<String, dynamic> json) {
-    return UnsplashImage(json['urls']['full'] as String);
+    return UnsplashImage(json['urls']['small'] as String);
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'urls': {'full': url}
+      'urls': {'small': url}
     };
   }
 }

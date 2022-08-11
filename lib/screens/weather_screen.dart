@@ -25,32 +25,28 @@ class WeatherScreen extends StatelessWidget {
         ),
         child: Scaffold(
           body: Center(
-            child: BlocBuilder<WeatherCubit, WeatherState>(
-              builder: (context, state) {
-                return Stack(
-                  children: [
-                    const BackgroundWidget(),
-                    SafeArea(
-                      child: Padding(
-                        padding: EdgeInsets.all(whiteSpace),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            BlocBuilder<WeatherCubit, WeatherState>(
-                                builder: (context, state) {
-                              return TopInfoWidget(weather: state.weather);
-                            }),
-                            BlocBuilder<WeatherCubit, WeatherState>(
-                                builder: (context, state) {
-                              return BottomInfoWidget(weather: state.weather);
-                            }),
-                          ],
-                        ),
-                      ),
+            child: Stack(
+              children: [
+                const BackgroundWidget(),
+                SafeArea(
+                  child: Padding(
+                    padding: EdgeInsets.all(whiteSpace),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        BlocBuilder<WeatherCubit, WeatherState>(
+                            builder: (context, state) {
+                          return TopInfoWidget(weather: state.weather);
+                        }),
+                        BlocBuilder<WeatherCubit, WeatherState>(
+                            builder: (context, state) {
+                          return BottomInfoWidget(weather: state.weather);
+                        }),
+                      ],
                     ),
-                  ],
-                );
-              },
+                  ),
+                ),
+              ],
             ),
           ),
         ),

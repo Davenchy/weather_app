@@ -12,3 +12,13 @@ final String kUnsplashBaseUrl =
 const String kFetchFailedMessage = 'Failed to fetch data!';
 const String kNoInternetConnectionMessage = 'No internet connection!';
 const String kNoMatchingLocationMessage = 'No matching location found!';
+
+// images
+const Map<String, String> kLocalBgImages = {
+  'sun': 'assets/images/sunny.jpg',
+  'cloud': 'assets/images/cloudy.jpg',
+  'rain': 'assets/images/rain.jpg',
+  'snow': 'assets/images/snow.jpg',
+  'wind': 'assets/images/windy.jpg',
+  'clear': 'assets/images/clear.jpg',
+};

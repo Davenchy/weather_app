@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -22,12 +23,20 @@ class WeatherCubit extends Cubit<WeatherState> {
     emit(const WeatherState(isLoading: true));
     final response = await repo.requestWeather(country);
 
+    // fetch background url from unsplash
     UnsplashImage? image;
-    if (response.isRight()) image = await repo.randomImage('');
+    if (response.isRight()) {
+      final weather = (response as Right<Failure, Weather>).value;
+      image = await repo.randomImage(
+        '${weather.condition} ${weather.location}',
+      );
+    }
 
-    response.fold(
-      (failure) => emit(WeatherState(error: getFailureMessage(failure))),
-      (weather) => emit(WeatherState(weather: weather, image: image)),
+    emit(
+      response.fold<WeatherState>(
+        (failure) => WeatherState(error: getFailureMessage(failure)),
+        (weather) => WeatherState(weather: weather, image: image),
+      ),
     );
   }
 }

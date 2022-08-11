@@ -21,8 +21,8 @@ class Weather with _$Weather {
       humidity: json['current']['humidity'],
       visibility: json['current']['vis_km'],
       uv: json['current']['uv'],
-      location: json['current']['location']['name'],
-      country: json['current']['location']['country'],
+      location: json['location']['name'],
+      country: json['location']['country'],
       condition: json['current']['condition']['text'],
     );
   }

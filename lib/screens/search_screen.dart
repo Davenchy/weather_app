@@ -38,7 +38,10 @@ class SearchScreen extends StatelessWidget {
                           ),
                           child: const Text(
                             'Check Todays Weather For',
-                            style: TextStyle(fontSize: 32),
+                            style: TextStyle(
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                         Padding(
@@ -75,6 +78,7 @@ class SearchScreen extends StatelessWidget {
                         SizedBox(
                           height: size.height * 0.4,
                           child: SingleChildScrollView(
+                            physics: const BouncingScrollPhysics(),
                             child: BlocBuilder<SearchCubit, SearchState>(
                               buildWhen: (oldS, newS) =>
                                   oldS.results != newS.results,

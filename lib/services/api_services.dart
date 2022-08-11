@@ -53,5 +53,5 @@ abstract class WeatherApiServiceModule {
       WeatherApiService(dio, baseUrl: kBaseUrl);
 
   UnsplashService getUnsplashService(@Named('UnsplashDio') Dio dio) =>
-      UnsplashService(dio, baseUrl: kBaseUrl);
+      UnsplashService(dio, baseUrl: kUnsplashBaseUrl);
 }

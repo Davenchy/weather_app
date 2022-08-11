@@ -29,7 +29,7 @@ class SearchResultsWidget extends StatelessWidget {
                   );
                 },
                 child: Chip(
-                  label: Text(result.name),
+                  label: Text('${result.country}/${result.name}'),
                   backgroundColor: Colors.white30,
                 ),
               ),
